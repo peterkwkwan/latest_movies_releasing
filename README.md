@@ -4,7 +4,7 @@ This app displays the latest movies releasing. For retrieving the list of movies
 
 ## Available Scripts
 
-### `npm start`
+> npm start
 
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -12,4 +12,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 ## Tech stack
 
 `CRA` - Create React App
+
 `styled-components` - for global style management and prop & CSS in JS support
