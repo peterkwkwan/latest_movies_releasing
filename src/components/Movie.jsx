@@ -23,7 +23,7 @@ export const Movie = ({ id, title, release_date, poster_path }) => {
   };
   return (
     <div>
-      <div onClick={handleClick}>
+      <div onClick={handleClick} className="text-2xl">
         Title: {title} - Year: {release_date?.substring(0, 4)}
         <img src={imgPath} width="200px" />
       </div>
