@@ -16,14 +16,14 @@ export const SearchBox = ({ handleSearchResults }) => {
   return (
     <div>
       {" "}
-      <input type="string" onChange={handleKeyPress} />
-      <button
-        className="text-secondary-main"
-        type="submit"
-        onClick={handleSearch}
-      >
-        Search
-      </button>
+      <input
+        type="string"
+        onChange={handleKeyPress}
+        id="search"
+        placeholder="Search for movies"
+        className="border-b ml-6 my-4 border-gray focus:border-primary-light focus:outline-none
+        placeholder:italic placeholder:text-primary-light placeholder:pl-1 text-primary-main"
+      />
     </div>
   );
 };
