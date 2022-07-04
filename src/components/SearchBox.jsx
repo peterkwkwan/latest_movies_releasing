@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { fetchSearchResults } from "../utils/api";
+import { ReactComponent as SearchIcon } from "../assets/search.svg";
 
 export const SearchBox = ({ handleSearchResults }) => {
   const [searchStr, setSearchStr] = useState("");
@@ -25,15 +26,15 @@ export const SearchBox = ({ handleSearchResults }) => {
   };
 
   return (
-    <div>
-      {" "}
+    <div className="flex my-6 items-end">
+      <SearchIcon />
       <input
         type="string"
         onChange={handleKeyPress}
         id="search"
         placeholder="Search for movies"
-        className="border-b ml-6 my-4 border-gray focus:border-primary-light focus:outline-none
-        placeholder:italic placeholder:text-primary-light placeholder:pl-1 text-gray-dark"
+        className="rounded-t w-80 border-b ml-2 border-gray focus:border-primary-main focus:outline-none
+        placeholder:italic placeholder:text-gray-dark placeholder:pl-1 text-gray-dark text-3xl"
       />
     </div>
   );

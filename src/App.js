@@ -21,10 +21,9 @@ function App() {
   };
 
   return (
-    <div>
-      <h1 className="text-3xl ml-6 mt-6 font-bold text-gray-dark">
-        Latest Movies Releasing
-      </h1>
+    <div className="bg-primary-lightest pt-6 pl-6">
+      <h1 className="font-bold text-gray-dark text-5xl underline">MovieDB</h1>
+      <h6 className="italic text-2xl pt-2">Latest Movies Releasing</h6>
 
       <SearchBox handleSearchResults={handleSearchResults} />
 

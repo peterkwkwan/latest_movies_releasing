@@ -54,7 +54,7 @@ export const Movie = ({
         backgroundPosition: "center",
       }}
       onClick={handleClick}
-      className="mb-4 mx-6 p-4 rounded-lg border-2 text-gray-light border-primary-main cursor-pointer group"
+      className="mb-4 mr-6 p-4 rounded-lg border-2 text-gray-light border-primary-main cursor-pointer group"
     >
       <h3 className="text-2xl ml-4 font-bold">
         {title}{" "}
