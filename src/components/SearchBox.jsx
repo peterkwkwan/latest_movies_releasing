@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { fetchSearchResults } from "../utils/api";
 
 export const SearchBox = ({ handleSearchResults }) => {
   const [searchStr, setSearchStr] = useState("");
 
-  const handleSearch = async () => {
-    const results = await fetchSearchResults(searchStr);
-    handleSearchResults(results);
+  const timeout = useRef();
+
+  const handleSearch = () => {
+    clearTimeout(timeout.current);
+
+    if (!searchStr.trim()) {
+      return;
+    }
+
+    timeout.current = setTimeout(async () => {
+      const results = await fetchSearchResults(searchStr);
+      handleSearchResults(results);
+    }, 700);
   };
 
   const handleKeyPress = (event) => {
+    handleSearch();
     setSearchStr(event.target.value);
   };
 
