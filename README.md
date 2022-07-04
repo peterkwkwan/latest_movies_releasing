@@ -1,6 +1,10 @@
 # Latest Movies Releasing
 
-This app displays the latest movies releasing. This app features a movie search feature and pagination.
+This app displays the latest movies releasing. 
+
+Hosted on NETLIFY - https://pkwan-movies-db.netlify.app/
+
+This app features a movie search feature and pagination.
 
 For retrieving the list of movies, I am calling the [The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction).
 
