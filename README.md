@@ -4,11 +4,12 @@ This app displays the latest movies releasing.
 
 Hosted on NETLIFY - https://pkwan-movies-db.netlify.app/
 
-This app features a movie search feature and pagination.
+## Features
 
-For retrieving the list of movies, I am calling the [The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction).
-
-For handling text-input searching feature, I implemented debouncing to prevent unnecessary API calls.
+- API fetching from [The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction)
+- Pagination
+- Text input auto-search
+- Debouncing during text search to prevent unnecessary API calls
 
 ## Available Scripts
 
