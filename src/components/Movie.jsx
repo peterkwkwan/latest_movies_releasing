@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { fetchMovieDetails } from "../utils/api";
 
 export const Movie = ({ id, title, release_date, poster_path }) => {
   const [showDetails, setShowDetails] = useState(false);
@@ -6,15 +7,9 @@ export const Movie = ({ id, title, release_date, poster_path }) => {
   const imgPath = `
     https://image.tmdb.org/t/p/w500${poster_path}`;
 
-  const fetchDetails = () => {
-    const apiKey = "9f1aabd12914b171540ce3c70fe36b7d";
-
-    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`;
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((data) => {
-        setMovieDetails(data);
-      });
+  const fetchDetails = async () => {
+    const result = await fetchMovieDetails(id);
+    setMovieDetails(result);
   };
 
   const handleClick = () => {

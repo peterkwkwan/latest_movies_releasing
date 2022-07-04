@@ -7,3 +7,20 @@ export const fetchSearchResults = async (searchString) => {
   const jsonResult = await result.json();
   return jsonResult.results;
 };
+
+export const fetchAllMovies = async (page) => {
+  const fetchMovieUrl = `
+    https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
+
+  const result = await fetch(fetchMovieUrl);
+  const jsonResult = await result.json();
+  return jsonResult.results;
+};
+
+export const fetchMovieDetails = async (id) => {
+  const detailsUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`;
+
+  const result = await fetch(detailsUrl);
+  const jsonResult = await result.json();
+  return jsonResult;
+};
