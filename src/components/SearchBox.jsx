@@ -1,28 +1,34 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { fetchSearchResults } from "../utils/api";
 import { ReactComponent as SearchIcon } from "../assets/search.svg";
 
-export const SearchBox = ({ handleSearchResults }) => {
-  const [searchStr, setSearchStr] = useState("");
-
+export const SearchBox = ({
+  handleSearchResults,
+  handleSearchChange,
+  handleToggleFetching,
+  searchStr,
+}) => {
   const timeout = useRef();
 
   const handleSearch = () => {
     clearTimeout(timeout.current);
+    handleToggleFetching(true);
 
     if (!searchStr.trim()) {
+      handleToggleFetching(false);
       return;
     }
 
     timeout.current = setTimeout(async () => {
       const results = await fetchSearchResults(searchStr);
       handleSearchResults(results);
+      handleToggleFetching(false);
     }, 700);
   };
 
   const handleKeyPress = (event) => {
     handleSearch();
-    setSearchStr(event.target.value);
+    handleSearchChange(event);
   };
 
   return (

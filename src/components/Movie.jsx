@@ -17,7 +17,7 @@ export const Movie = ({
   const imgUrl = `${BASE_PATH}${poster_path}`;
   const backdropUrl = `${BASE_PATH}${backdrop_path}`;
 
-  const date = new Date(release_date);
+  const date = new Date(release_date || "1970-01-01");
   const formattedDate = new Intl.DateTimeFormat("en", {
     day: "numeric",
     month: "long",
