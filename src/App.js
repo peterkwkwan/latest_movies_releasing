@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div>
-      <h1 className="text-3xl ml-6 font-bold text-gray-dark">
+      <h1 className="text-3xl ml-6 mt-6 font-bold text-gray-dark">
         Latest Movies Releasing
       </h1>
 
