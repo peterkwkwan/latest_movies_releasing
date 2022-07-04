@@ -17,6 +17,13 @@ export const Movie = ({
   const imgUrl = `${BASE_PATH}${poster_path}`;
   const backdropUrl = `${BASE_PATH}${backdrop_path}`;
 
+  const date = new Date(release_date);
+  const formattedDate = new Intl.DateTimeFormat("en", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+
   const fetchDetails = async () => {
     const result = await fetchMovieDetails(id);
     alreadyFetched.current = true;
@@ -96,7 +103,7 @@ export const Movie = ({
           </div>
 
           <div>
-            Release Date: <Content>{release_date}</Content>
+            Release Date: <Content>{formattedDate}</Content>
           </div>
         </div>
         <div className="w-3/4 pl-6">
