@@ -1,14 +1,23 @@
 import React, { useRef, useState } from "react";
 import { fetchMovieDetails } from "../utils/api";
 
-export const Movie = ({ id, title, release_date, poster_path }) => {
+export const Movie = ({
+  id,
+  title,
+  release_date,
+  poster_path,
+  backdrop_path,
+}) => {
   const [showDetails, setShowDetails] = useState(false);
   const [movieDetails, setMovieDetails] = useState(null);
 
   const alreadyFetched = useRef();
 
-  const imgPath = `
+  const imgUrl = `
     https://image.tmdb.org/t/p/w500${poster_path}`;
+
+  const backdropUrl = `
+    https://image.tmdb.org/t/p/w500${backdrop_path}`;
 
   const fetchDetails = async () => {
     const result = await fetchMovieDetails(id);
@@ -22,7 +31,7 @@ export const Movie = ({ id, title, release_date, poster_path }) => {
   };
 
   const Placeholder = () => {
-    return <span className="h-4 w-12 bg-gray rounded inline-block"></span>;
+    return <span className="h-4 w-12 bg-gray-dark rounded inline-block"></span>;
   };
 
   const GenreTag = ({ genre }) => {
@@ -33,35 +42,63 @@ export const Movie = ({ id, title, release_date, poster_path }) => {
     );
   };
 
+  const Content = ({ children }) => {
+    return <span className="font-bold">{children}</span>;
+  };
+
   return (
-    <div className="bg-primary-lightest mb-4 mx-6 rounded-lg border border-primary-main cursor-pointer">
-      <div
-        onClick={handleClick}
-        className="text-2xl ml-4 text-gray-darkest font-bold"
-      >
+    <div
+      style={{
+        background: `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(${backdropUrl})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+      onClick={handleClick}
+      className="mb-4 mx-6 p-4 rounded-lg border-2 text-gray-light border-primary-main cursor-pointer group"
+    >
+      <h3 className="text-2xl ml-4 font-bold">
         {title}{" "}
         <span className="font-normal">({release_date?.substring(0, 4)})</span>
-        <img src={imgPath} width="200px" alt={title} />
-      </div>
+      </h3>
 
-      <div className={`${showDetails ? "block" : "hidden"} m-4`}>
-        <div>
-          {!movieDetails ? (
-            <Placeholder />
-          ) : (
-            movieDetails.genres?.map((genre) => {
-              return <GenreTag genre={genre.name} />;
-            })
-          )}
-        </div>
-        <div>
-          Status: {movieDetails ? movieDetails.status : <Placeholder />}
-        </div>
-        <div>
-          Rating: {movieDetails ? movieDetails.vote_average : <Placeholder />}
-        </div>
+      <div className={`${showDetails ? "block" : "hidden"} m-4 flex w-full`}>
+        <div className="w-1/4">
+          <img
+            className="border-2 rounded border-gray group-hover:border-secondary-main mb-4"
+            src={imgUrl}
+            alt={title}
+            width="400px"
+          />
 
-        <div>Release Date: {release_date}</div>
+          <div className="mt-2">
+            Status:{" "}
+            {movieDetails ? (
+              <Content>{movieDetails.status}</Content>
+            ) : (
+              <Placeholder />
+            )}
+          </div>
+          <div>
+            Rating:{" "}
+            {movieDetails ? (
+              <Content>{movieDetails.vote_average}</Content>
+            ) : (
+              <Placeholder />
+            )}
+          </div>
+
+          <div>
+            Release Date: <Content>{release_date}</Content>
+          </div>
+        </div>
+        <div className="w-3/4 pl-6">
+          <div>
+            {movieDetails?.genres?.map((genre) => {
+              return <GenreTag key={genre.id} genre={genre.name} />;
+            })}
+          </div>
+          <p className="my-4">{movieDetails?.overview}</p>
+        </div>
       </div>
     </div>
   );

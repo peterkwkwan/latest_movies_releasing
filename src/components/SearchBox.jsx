@@ -33,7 +33,7 @@ export const SearchBox = ({ handleSearchResults }) => {
         id="search"
         placeholder="Search for movies"
         className="border-b ml-6 my-4 border-gray focus:border-primary-light focus:outline-none
-        placeholder:italic placeholder:text-primary-light placeholder:pl-1 text-primary-main"
+        placeholder:italic placeholder:text-primary-light placeholder:pl-1 text-gray-dark"
       />
     </div>
   );
