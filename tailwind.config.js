@@ -4,5 +4,6 @@ module.exports = {
   theme: {
     extend: {},
   },
+  presets: [require("./custom-preset.js")],
   plugins: [],
 };

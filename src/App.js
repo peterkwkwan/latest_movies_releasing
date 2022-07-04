@@ -35,10 +35,16 @@ function App() {
 
   return (
     <div>
-      <h1>Movie App</h1>
+      <h1 className="text-3xl font-bold text-primary-main">
+        Latest Movies Releasing
+      </h1>
 
       <input type="string" onChange={handleKeyPress} />
-      <button type="submit" onClick={handleSearch}>
+      <button
+        className="text-secondary-main"
+        type="submit"
+        onClick={handleSearch}
+      >
         Search
       </button>
 

@@ -6,7 +6,7 @@ module.exports = {
         light: "#bfb3e8",
       },
       secondary: {
-        main: "f51d65",
+        main: "#f51d65",
         light: "#e6a8bc",
       },
       gray: {

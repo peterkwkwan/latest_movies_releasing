@@ -22,9 +22,9 @@ export const Movie = ({ id, title, release_date, poster_path }) => {
     setShowDetails((prevState) => !prevState);
   };
   return (
-    <div>
-      <div onClick={handleClick} className="text-2xl">
-        Title: {title} - Year: {release_date?.substring(0, 4)}
+    <div className="bg-primary-light mb-4 mx-6 rounded-lg border border-primary-main">
+      <div onClick={handleClick} className="text-2xl ml-4 text-gray-darkest">
+        {title} ({release_date?.substring(0, 4)})
         <img src={imgPath} width="200px" />
       </div>
 
