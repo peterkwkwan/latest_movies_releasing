@@ -11,6 +11,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Tech stack
 
-`CRA` - Create React App
+[React](https://reactjs.org/docs/create-a-new-react-app.html) - Create React App
 
 [tailwind css](https://tailwindcss.com/docs/guides/create-react-app) - for powerful, highly customizable, low-level CSS framework utilizing inline-styling
