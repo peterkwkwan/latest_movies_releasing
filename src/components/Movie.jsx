@@ -13,11 +13,9 @@ export const Movie = ({
 
   const alreadyFetched = useRef();
 
-  const imgUrl = `
-    https://image.tmdb.org/t/p/w500${poster_path}`;
-
-  const backdropUrl = `
-    https://image.tmdb.org/t/p/w500${backdrop_path}`;
+  const BASE_PATH = "https://image.tmdb.org/t/p/w500";
+  const imgUrl = `${BASE_PATH}${poster_path}`;
+  const backdropUrl = `${BASE_PATH}${backdrop_path}`;
 
   const fetchDetails = async () => {
     const result = await fetchMovieDetails(id);
@@ -39,6 +37,16 @@ export const Movie = ({
       <span className="rounded border-2 border-gray-light bg-gray-dark font-bold text-gray-light mr-2 p-1">
         {genre}
       </span>
+    );
+  };
+
+  const Company = ({ name, logoUrl }) => {
+    return (
+      <img
+        className="mr-4 w-32 bg-gray-lightest rounded p-4"
+        src={`${BASE_PATH}${logoUrl}`}
+        alt={name}
+      />
     );
   };
 
@@ -92,12 +100,26 @@ export const Movie = ({
           </div>
         </div>
         <div className="w-3/4 pl-6">
+          <p className="mb-4 text-xl font-bold">{movieDetails?.tagline}</p>
           <div>
             {movieDetails?.genres?.map((genre) => {
               return <GenreTag key={genre.id} genre={genre.name} />;
             })}
           </div>
           <p className="my-4">{movieDetails?.overview}</p>
+          <div className="flex item-end">
+            {movieDetails?.production_companies?.map((company) => {
+              return (
+                company.logo_path && (
+                  <Company
+                    key={company.id}
+                    name={company.name}
+                    logoUrl={company.logo_path}
+                  />
+                )
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
