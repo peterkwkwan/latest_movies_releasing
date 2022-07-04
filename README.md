@@ -1,6 +1,10 @@
 # Latest Movies Releasing
 
-This app displays the latest movies releasing. For retrieving the list of movies, I am calling the [The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction)
+This app displays the latest movies releasing.
+
+For retrieving the list of movies, I am calling the [The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction).
+
+For handling text-input searching feature, I implemented debouncing to prevent unnecessary API calls.
 
 ## Available Scripts
 
