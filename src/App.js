@@ -1,21 +1,12 @@
 import { useState } from "react";
-import { Movie } from "./components/Movie";
 import { MovieList } from "./components/MovieList";
+import { SearchBox } from "./components/SearchBox";
+import { SearchResults } from "./components/SearchResults";
 
 function App() {
   const [page, setPage] = useState(1);
-  const [searchStr, setSearchStr] = useState("");
 
   const [searchResults, setSearchResults] = useState([]);
-
-  const apiKey = "9f1aabd12914b171540ce3c70fe36b7d";
-  const fetchSearchMovieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchStr}&page=1&include_adult=false`;
-
-  const fetchSearchMovie = () => {
-    fetch(fetchSearchMovieUrl)
-      .then((res) => res.json())
-      .then((res) => setSearchResults(res.results));
-  };
 
   const handlePreviousClicked = () => {
     setPage(page - 1);
@@ -25,33 +16,20 @@ function App() {
     setPage(page + 1);
   };
 
-  const handleKeyPress = (event) => {
-    setSearchStr(event.target.value);
-  };
-
-  const handleSearch = () => {
-    fetchSearchMovie();
+  const handleSearchResults = (results) => {
+    setSearchResults(results);
   };
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-primary-main">
+      <h1 className="text-3xl ml-6 font-bold text-primary-main">
         Latest Movies Releasing
       </h1>
 
-      <input type="string" onChange={handleKeyPress} />
-      <button
-        className="text-secondary-main"
-        type="submit"
-        onClick={handleSearch}
-      >
-        Search
-      </button>
+      <SearchBox handleSearchResults={handleSearchResults} />
 
       {searchResults?.length > 0 ? (
-        searchResults?.map((movie) => {
-          return <Movie key={movie.title} {...movie} />;
-        })
+        <SearchResults results={searchResults} />
       ) : (
         <MovieList page={page} />
       )}

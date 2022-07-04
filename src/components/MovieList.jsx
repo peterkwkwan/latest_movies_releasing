@@ -18,9 +18,8 @@ export const MovieList = ({ page }) => {
   console.log(movies);
   return (
     <>
-      <div>MovieList</div>
       {movies.map((movie) => (
-        <Movie key={movie.title} {...movie} />
+        <Movie key={movie.id} {...movie} />
       ))}
     </>
   );
