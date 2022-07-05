@@ -53,11 +53,13 @@ function App() {
         <SearchResults results={searchResults} />
       )}
 
-      <Buttons
-        page={page}
-        handlePreviousClicked={handlePreviousClicked}
-        handleNextClicked={handleNextClicked}
-      />
+      {searchStr !== "" && (
+        <Buttons
+          page={page}
+          handlePreviousClicked={handlePreviousClicked}
+          handleNextClicked={handleNextClicked}
+        />
+      )}
     </div>
   );
 }
