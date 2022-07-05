@@ -53,7 +53,7 @@ function App() {
         <SearchResults results={searchResults} />
       )}
 
-      {searchStr !== "" && (
+      {searchStr === "" && (
         <Buttons
           page={page}
           handlePreviousClicked={handlePreviousClicked}
